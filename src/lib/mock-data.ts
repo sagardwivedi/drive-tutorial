@@ -8,11 +8,11 @@ export interface File {
 }
 
 export type Folder = {
-  id: string
-  name: string
-  type: "folder",
-  parent: string | null
-}
+  id: string;
+  name: string;
+  type: "folder";
+  parent: string | null;
+};
 
 export const mockFolders: Folder[] = [
   { id: "root", name: "root", type: "folder", parent: null },
@@ -20,7 +20,7 @@ export const mockFolders: Folder[] = [
   { id: "2", name: "Images", type: "folder", parent: "root" },
   { id: "3", name: "Work", type: "folder", parent: "root" },
   { id: "8", name: "Presentations", type: "folder", parent: "3" },
-]
+];
 
 export const mockFiles: File[] = [
   {
