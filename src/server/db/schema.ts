@@ -1,18 +1,18 @@
-import "server-only"
+import "server-only";
 
 import {
+  bigint,
   index,
   int,
   singlestoreTableCreator,
   text,
-  bigint,
 } from "drizzle-orm/singlestore-core";
 
 export const createTable = singlestoreTableCreator(
   (name) => `drive-tutorial_${name}`,
 );
 
-export const files = createTable(
+export const files_table = createTable(
   "files_table",
   {
     id: bigint("id", { mode: "bigint" }).primaryKey().autoincrement(),
@@ -26,7 +26,7 @@ export const files = createTable(
   },
 );
 
-export const folders = createTable(
+export const folders_table = createTable(
   "folders_table",
   {
     id: bigint("id", { mode: "bigint", unsigned: true })
