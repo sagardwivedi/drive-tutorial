@@ -1,58 +1,58 @@
 import { FileIcon, FolderIcon } from "lucide-react";
-import type { File, Folder } from "~/lib/mock-data";
+import type { files, folders } from "~/server/db/schema";
 
-export function FileRow(props: { file: File }) {
-  const { file } = props;
+export function FileRow(props: { file: typeof files.$inferSelect }) {
+	const { file } = props;
 
-  return (
-    <li
-      key={file.id}
-      className="hover:bg-gray-750 border-b border-gray-700 px-6 py-4"
-    >
-      <div className="grid grid-cols-12 items-center gap-4">
-        <div className="col-span-6 flex items-center">
-          <a
-            href={file.url}
-            className="flex items-center text-gray-100 hover:text-blue-400"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FileIcon className="mr-3" size={20} />
-            {file.name}
-          </a>
-        </div>
-        <div className="col-span-3 text-gray-400">{"file"}</div>
-        <div className="col-span-3 text-gray-400">{file.size}</div>
-      </div>
-    </li>
-  );
+	return (
+		<li
+			key={file.id}
+			className="hover:bg-gray-750 border-b border-gray-700 px-6 py-4"
+		>
+			<div className="grid grid-cols-12 items-center gap-4">
+				<div className="col-span-6 flex items-center">
+					<a
+						href={file.url}
+						className="flex items-center text-gray-100 hover:text-blue-400"
+						target="_blank"
+						rel="noreferrer"
+					>
+						<FileIcon className="mr-3" size={20} />
+						{file.name}
+					</a>
+				</div>
+				<div className="col-span-3 text-gray-400">{"file"}</div>
+				<div className="col-span-3 text-gray-400">{file.size}</div>
+			</div>
+		</li>
+	);
 }
 
 export function FolderRow(props: {
-  folder: Folder;
-  handleFolderClick: () => void;
+	folder: typeof folders.$inferSelect;
+	handleFolderClick: () => void;
 }) {
-  const { folder, handleFolderClick } = props;
+	const { folder, handleFolderClick } = props;
 
-  return (
-    <li
-      key={folder.id}
-      className="hover:bg-gray-750 border-b border-gray-700 px-6 py-4"
-    >
-      <div className="grid grid-cols-12 items-center gap-4">
-        <div className="col-span-6 flex items-center">
-          <button
-            type="button"
-            onClick={() => handleFolderClick()}
-            className="flex items-center text-gray-100 hover:text-blue-400"
-          >
-            <FolderIcon className="mr-3" size={20} />
-            {folder.name}
-          </button>
-        </div>
-        <div className="col-span-3 text-gray-400" />
-        <div className="col-span-3 text-gray-400" />
-      </div>
-    </li>
-  );
+	return (
+		<li
+			key={folder.id}
+			className="hover:bg-gray-750 border-b border-gray-700 px-6 py-4"
+		>
+			<div className="grid grid-cols-12 items-center gap-4">
+				<div className="col-span-6 flex items-center">
+					<button
+						type="button"
+						onClick={() => handleFolderClick()}
+						className="flex items-center text-gray-100 hover:text-blue-400"
+					>
+						<FolderIcon className="mr-3" size={20} />
+						{folder.name}
+					</button>
+				</div>
+				<div className="col-span-3 text-gray-400" />
+				<div className="col-span-3 text-gray-400" />
+			</div>
+		</li>
+	);
 }
